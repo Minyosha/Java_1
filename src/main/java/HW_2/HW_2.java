@@ -15,12 +15,12 @@ public class HW_2 {
     }
 
 
-//    Дана строка sql-запроса "select * from students where ". Сформируйте часть WHERE этого запроса, используя StringBuilder.
-//    Данные для фильтрации приведены ниже в виде json строки.
-//    Если значение null, то параметр не должен попадать в запрос.
-//    Параметры для фильтрации: {"name":"Ivanov", "country":"Russia", "city":"Moscow", "age":"null"}
+    //    Р”Р°РЅР° СЃС‚СЂРѕРєР° sql-Р·Р°РїСЂРѕСЃР° "select * from students where ". РЎС„РѕСЂРјРёСЂСѓР№С‚Рµ С‡Р°СЃС‚СЊ WHERE СЌС‚РѕРіРѕ Р·Р°РїСЂРѕСЃР°, РёСЃРїРѕР»СЊР·СѓСЏ StringBuilder.
+//    Р”Р°РЅРЅС‹Рµ РґР»СЏ С„РёР»СЊС‚СЂР°С†РёРё РїСЂРёРІРµРґРµРЅС‹ РЅРёР¶Рµ РІ РІРёРґРµ json СЃС‚СЂРѕРєРё.
+//    Р•СЃР»Рё Р·РЅР°С‡РµРЅРёРµ null, С‚Рѕ РїР°СЂР°РјРµС‚СЂ РЅРµ РґРѕР»Р¶РµРЅ РїРѕРїР°РґР°С‚СЊ РІ Р·Р°РїСЂРѕСЃ.
+//    РџР°СЂР°РјРµС‚СЂС‹ РґР»СЏ С„РёР»СЊС‚СЂР°С†РёРё: {"name":"Ivanov", "country":"Russia", "city":"Moscow", "age":"null"}
     private static String transformToSql(String stringToConvert) {
-        // Разделение на отдельные строки
+        // Р Р°Р·РґРµР»РµРЅРёРµ РЅР° РѕС‚РґРµР»СЊРЅС‹Рµ СЃС‚СЂРѕРєРё
         String[] dataFromString = stringToConvert.split(",");
         ArrayList<String> afterTransform = new ArrayList<String>();
         afterTransform.add("SELECT * FROM students WHERE ");
@@ -28,7 +28,7 @@ public class HW_2 {
         for (int i = 0; i < dataFromString.length; i++) {
             dataFromString[i] = dataFromString[i].replace(" ", "");
             dataFromString[i] = dataFromString[i].replace("\"", "");
-            // Строки, содержащие null, не будут добавлены в ArrayList
+            // РЎС‚СЂРѕРєРё, СЃРѕРґРµСЂР¶Р°С‰РёРµ null, РЅРµ Р±СѓРґСѓС‚ РґРѕР±Р°РІР»РµРЅС‹ РІ ArrayList
             if (dataFromString[i].contains("null")) {
             } else {
                 dataFromString[i] = dataFromString[i].replace(":", " = '");
@@ -38,13 +38,13 @@ public class HW_2 {
             }
 
         }
-        // Заменяем лишний AND на ;
+        // Р—Р°РјРµРЅСЏРµРј Р»РёС€РЅРёР№ AND РЅР° ;
         afterTransform.set((afterTransform.size() - 1), ";");
 
-        // Удаляем лишний AND
+        // РЈРґР°Р»СЏРµРј Р»РёС€РЅРёР№ AND
 //        afterTransform.remove(afterTransform.size() - 1);
 
-        // Склейка строки из элементов ArrayList
+        // РЎРєР»РµР№РєР° СЃС‚СЂРѕРєРё РёР· СЌР»РµРјРµРЅС‚РѕРІ ArrayList
         StringBuilder finalSqlQueue = new StringBuilder();
         for (Object o : afterTransform) {
             finalSqlQueue.append(o);
@@ -54,34 +54,33 @@ public class HW_2 {
     }
 
 
-    // Реализуйте алгоритм сортировки пузырьком числового массива, результат после каждой итерации запишите в лог-файл.
+    // Р РµР°Р»РёР·СѓР№С‚Рµ Р°Р»РіРѕСЂРёС‚Рј СЃРѕСЂС‚РёСЂРѕРІРєРё РїСѓР·С‹СЂСЊРєРѕРј С‡РёСЃР»РѕРІРѕРіРѕ РјР°СЃСЃРёРІР°, СЂРµР·СѓР»СЊС‚Р°С‚ РїРѕСЃР»Рµ РєР°Р¶РґРѕР№ РёС‚РµСЂР°С†РёРё Р·Р°РїРёС€РёС‚Рµ РІ Р»РѕРі-С„Р°Р№Р».
     private static void bubbleSort() throws IOException {
-        // Получаем текущую дату и время
+        // РџРѕР»СѓС‡Р°РµРј С‚РµРєСѓС‰СѓСЋ РґР°С‚Сѓ Рё РІСЂРµРјСЏ
         Date date = new Date();
-        // Преобразуем в String и заменяем : на -
+        // РџСЂРµРѕР±СЂР°Р·СѓРµРј РІ String Рё Р·Р°РјРµРЅСЏРµРј : РЅР° -
         String dateName = String.valueOf(date);
         dateName = dateName.replace(":", "-");
         StringBuffer sb = new StringBuffer(dateName);
         sb.append(".txt");
-        System.out.println("Создан файл с именем:");
+        System.out.println("РЎРѕР·РґР°РЅ С„Р°Р№Р» СЃ РёРјРµРЅРµРј:");
         System.out.println(sb);
-        // Создаем новый файл с расширением txt
+        // РЎРѕР·РґР°РµРј РЅРѕРІС‹Р№ С„Р°Р№Р» СЃ СЂР°СЃС€РёСЂРµРЅРёРµРј txt
         StandardCharsets.UTF_8.name();
         FileWriter fileWriter = new FileWriter(String.valueOf(sb), StandardCharsets.UTF_8, true);
 
 
-
-        // Создаем и генерируем массив
+        // РЎРѕР·РґР°РµРј Рё РіРµРЅРµСЂРёСЂСѓРµРј РјР°СЃСЃРёРІ
         int nums[] = new int[10];
 
         for (int i = 0; i < nums.length; i++) {
             nums[i] = (int) (Math.random() * 10);
         }
 
-        System.out.println("Сгенерирован массив:");
-        fileWriter.append("Сгенерирован массив: ");
+        System.out.println("РЎРіРµРЅРµСЂРёСЂРѕРІР°РЅ РјР°СЃСЃРёРІ:");
+        fileWriter.append("РЎРіРµРЅРµСЂРёСЂРѕРІР°РЅ РјР°СЃСЃРёРІ: ");
 
-        // Печать массива и запись его в буфер
+        // РџРµС‡Р°С‚СЊ РјР°СЃСЃРёРІР° Рё Р·Р°РїРёСЃСЊ РµРіРѕ РІ Р±СѓС„РµСЂ
         for (int i = 0; i < nums.length; i++) {
             System.out.print(nums[i]);
             System.out.print(" ");
@@ -91,24 +90,24 @@ public class HW_2 {
         System.out.println();
         fileWriter.append("\n");
 
-        // Создание счетчика перестановок для логгера
+        // РЎРѕР·РґР°РЅРёРµ СЃС‡РµС‚С‡РёРєР° РїРµСЂРµСЃС‚Р°РЅРѕРІРѕРє РґР»СЏ Р»РѕРіРіРµСЂР°
         int replacementCounter = 1;
 
-        // Цикл, выполняющий перестановки элементов массива
+        // Р¦РёРєР», РІС‹РїРѕР»РЅСЏСЋС‰РёР№ РїРµСЂРµСЃС‚Р°РЅРѕРІРєРё СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°
         boolean needSort = true;
         while (needSort == true) {
             for (int i = 0; i < nums.length - 1; i++) {
                 if (nums[i] > nums[i + 1]) {
-                    //Логгирование вида [№][Date][№... = ... <=> №... = ...]
+                    //Р›РѕРіРіРёСЂРѕРІР°РЅРёРµ РІРёРґР° [в„–][Date][в„–... = ... <=> в„–... = ...]
                     fileWriter.append("[");
                     fileWriter.append(String.valueOf(replacementCounter));
                     fileWriter.append("] [");
                     fileWriter.append(String.valueOf(date));
-                    fileWriter.append("] [№");
+                    fileWriter.append("] [в„–");
                     fileWriter.append(String.valueOf(i));
                     fileWriter.append(" = ");
                     fileWriter.append(String.valueOf(nums[i]));
-                    fileWriter.append(" <=> №");
+                    fileWriter.append(" <=> в„–");
                     fileWriter.append(String.valueOf(i + 1));
                     fileWriter.append(" = ");
                     fileWriter.append(String.valueOf(nums[i + 1]));
@@ -120,7 +119,7 @@ public class HW_2 {
                     fileWriter.append("\n");
                 }
             }
-            // Проверка необходимости дальнейшей сортировки массива
+            // РџСЂРѕРІРµСЂРєР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РґР°Р»СЊРЅРµР№С€РµР№ СЃРѕСЂС‚РёСЂРѕРІРєРё РјР°СЃСЃРёРІР°
             int count = 0;
             for (int i = 0; i < nums.length - 1; i++) {
                 if (nums[i] <= nums[i + 1]) {
@@ -135,9 +134,9 @@ public class HW_2 {
 
         }
 
-        // Печать отсортированного массива и запись его в буфер
-        System.out.println("Отсортированный массив:");
-        fileWriter.append("Отсортированный массив: ");
+        // РџРµС‡Р°С‚СЊ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ РјР°СЃСЃРёРІР° Рё Р·Р°РїРёСЃСЊ РµРіРѕ РІ Р±СѓС„РµСЂ
+        System.out.println("РћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ РјР°СЃСЃРёРІ:");
+        fileWriter.append("РћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ РјР°СЃСЃРёРІ: ");
         for (int i = 0; i < nums.length; i++) {
             System.out.print(nums[i]);
             System.out.print(" ");
@@ -145,7 +144,7 @@ public class HW_2 {
             fileWriter.append(" ");
         }
 
-        // Запись данных из буфера в файл
+        // Р—Р°РїРёСЃСЊ РґР°РЅРЅС‹С… РёР· Р±СѓС„РµСЂР° РІ С„Р°Р№Р»
         fileWriter.flush();
 
     }
