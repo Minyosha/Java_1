@@ -15,26 +15,26 @@ public class HW_1 {
     }
 
 
-    // Вычислить n-ое треугольного число(сумма чисел от 1 до n), n! (произведение чисел от 1 до n)
+    // Р’С‹С‡РёСЃР»РёС‚СЊ n-РѕРµ С‚СЂРµСѓРіРѕР»СЊРЅРѕРіРѕ С‡РёСЃР»Рѕ(СЃСѓРјРјР° С‡РёСЃРµР» РѕС‚ 1 РґРѕ n), n! (РїСЂРѕРёР·РІРµРґРµРЅРёРµ С‡РёСЃРµР» РѕС‚ 1 РґРѕ n)
     private static void calculations(Scanner scanner) {
-        System.out.println("Введите n для вычисления треугольного числа и n!");
+        System.out.println("Р’РІРµРґРёС‚Рµ n РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ С‚СЂРµСѓРіРѕР»СЊРЅРѕРіРѕ С‡РёСЃР»Р° Рё n!");
         int n = scanner.nextInt();
         int triangleNumber = ((n * (n + 1)) / 2);
         int triangleSumm = 0;
-        System.out.println("При n = " + n + ": Тn = " + triangleNumber);
+        System.out.println("РџСЂРё n = " + n + ": Рўn = " + triangleNumber);
         for (int i = 1; i < n + 1; i++) {
             triangleSumm = triangleSumm + ((i * (i + 1)) / 2);
         }
-        System.out.println("Сумма первых " + n + " треугольных чисел равна " + triangleSumm);
+        System.out.println("РЎСѓРјРјР° РїРµСЂРІС‹С… " + n + " С‚СЂРµСѓРіРѕР»СЊРЅС‹С… С‡РёСЃРµР» СЂР°РІРЅР° " + triangleSumm);
         int factorial = 1;
         for (int i = 1; i < n + 1; i++) {
             factorial = factorial * i;
         }
-        System.out.println("При n = " + n + ": n! = " + factorial);
+        System.out.println("РџСЂРё n = " + n + ": n! = " + factorial);
     }
 
 
-    // Проверка простое ли число
+    // РџСЂРѕРІРµСЂРєР°: РїСЂРѕСЃС‚РѕРµ Р»Рё С‡РёСЃР»Рѕ
     public static boolean isSimple(Integer number) {
         if (number < 2) return false;
         for (int i = 2; i < ((number / 2) + 1); i++) {
@@ -46,9 +46,9 @@ public class HW_1 {
     }
 
 
-    // Вывести все простые числа от 1 до 1000
+    // РЎРїРёСЃРѕРє РїСЂРѕСЃС‚С‹С… С‡РёСЃРµР» РѕС‚ 1 РґРѕ 1000
     public static void simpleNumbers(int n) {
-        System.out.println("Список простых чисел от 1 до " + n + ":");
+        System.out.println("РЎРїРёСЃРѕРє РїСЂРѕСЃС‚С‹С… С‡РёСЃРµР» РѕС‚ 1 РґРѕ " + n + ":");
         for (int i = 1; i < n + 1; i++) {
             if (isSimple(i) == true) {
                 System.out.print(i);
@@ -58,13 +58,13 @@ public class HW_1 {
     }
 
 
-    // Простой калькулятор
+    // РџСЂРѕСЃС‚РѕР№ РєР°Р»СЊРєСѓР»СЏС‚РѕСЂ
     public static void simpleCalculator(Scanner scanner) {
-        System.out.println("Введите число a:");
+        System.out.println("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ a:");
         float a = scanner.nextInt();
-        System.out.println("Введите число b:");
+        System.out.println("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ b:");
         float b = scanner.nextInt();
-        System.out.println("Введите число для выбора оператора для расчета выражения a?b:");
+        System.out.println("Р’С‹Р±РµСЂРёС‚Рµ РЅРѕРјРµСЂ РѕРїРµСЂР°С‚РѕСЂР° РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ a?b:");
         System.out.println("1: +");
         System.out.println("2: -");
         System.out.println("3: *");
@@ -83,7 +83,7 @@ public class HW_1 {
                 break;
             case 4:
                 if (b == 0) {
-                    System.out.println("На ноль делить нельзя");
+                    System.out.println("РќР° РЅРѕР»СЊ РґРµР»РёС‚СЊ РЅРµР»СЊР·СЏ");
                 } else {
                     System.out.println("a / b = " + (a / b));
                 }
@@ -93,14 +93,14 @@ public class HW_1 {
     }
 
 
-    //Задано уравнение вида q + w = e, q, w, e >= 0. Некоторые цифры могут быть заменены знаком вопроса,
-    // например 2? + ?5 = 69. Требуется восстановить выражение до верного равенства.
-    // Предложить хотя бы одно решение или сообщить, что его нет.
+    //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ q + w = e, q, w, e >= 0. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ,
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2? + ?5 = 69. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ.
 //    public static void equation(Scanner scanner) {
-//        System.out.println("Задано уравнение вида q + w = e, где q, w, e >= 0");
-//        System.out.println("Введите поочередно q, w, e, заменив некоторые цифры знаками ?");
-//        System.out.println("Программа попробует вычислить символы, при которых равенство будет верным или сообщит, что решения нет");
-//        System.out.println("Введите q");
+//        System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ q + w = e, пїЅпїЅпїЅ q, w, e >= 0");
+//        System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ q, w, e, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ ?");
+//        System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ");
+//        System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ q");
 //        int countQuestions = 0;
 //        int qRank = 0;
 //        int wRank = 0;
@@ -110,13 +110,13 @@ public class HW_1 {
 //            if (element == '?') countQuestions++;
 //            qRank++;
 //        }
-//        System.out.println("Введите w");
+//        System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ w");
 //        String w = scanner.nextLine();
 //        for (char element : w.toCharArray()){
 //            if (element == '?') countQuestions++;
 //            wRank++;
 //        }
-//        System.out.println("Введите e");
+//        System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ e");
 //        String e = scanner.nextLine();
 //        for (char element : e.toCharArray()){
 //            if (element == '?') countQuestions++;
