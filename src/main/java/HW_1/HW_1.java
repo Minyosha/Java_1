@@ -1,5 +1,6 @@
 package HW_1;
-//
+
+
 import java.util.Scanner;
 
 public class HW_1 {
